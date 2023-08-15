@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.juanparedes.pruebameli"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.juanparedes.pruebameli"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -38,6 +38,8 @@ android {
 }
 
 dependencies {
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.0")
     val roomVersion = "2.5.2"
     val retrofitVersion = "2.9.0"
 
