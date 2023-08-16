@@ -61,5 +61,6 @@ dependencies {
     implementation("androidx.room:room-rxjava3:$roomVersion")
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+    implementation ("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.3")
 }

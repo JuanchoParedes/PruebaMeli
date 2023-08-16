@@ -1,6 +1,6 @@
-package com.juanparedes.pruebameli.data.remote.model
+package com.juanparedes.pruebameli.domain.model
 
-data class ResultProductDto(
+data class ResultProduct(
     val id: String,
     val title: String,
     val thumbnail: String,

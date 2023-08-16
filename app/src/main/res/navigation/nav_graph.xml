@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/productsListFragment">
+    app:startDestination="@id/searchProductsFragment">
 
     <fragment
-        android:id="@+id/productsListFragment"
-        android:name="com.juanparedes.pruebameli.view.ProductsListFragment"
+        android:id="@+id/searchProductsFragment"
+        android:name="com.juanparedes.pruebameli.view.SearchProductsFragment"
         android:label="fragment_products_list"
-        tools:layout="@layout/fragment_products_list">
+        tools:layout="@layout/fragment_search_products">
         <action
-            android:id="@+id/action_productsListFragment_to_productDetailFragment"
+            android:id="@+id/action_searchProductsFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
     </fragment>
 
