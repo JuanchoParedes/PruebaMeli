@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/searchProductsFragment"
-        android:name="com.juanparedes.pruebameli.view.SearchProductsFragment"
+        android:name="com.juanparedes.pruebameli.view.searchproducts.SearchProductsFragment"
         android:label="fragment_products_list"
         tools:layout="@layout/fragment_search_products">
         <action
@@ -17,8 +17,15 @@
 
     <fragment
         android:id="@+id/productDetailFragment"
-        android:name="com.juanparedes.pruebameli.view.ProductDetailFragment"
+        android:name="com.juanparedes.pruebameli.view.productdetail.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+
+        <argument
+            android:name="productId"
+            app:argType="string"
+            android:defaultValue="0" />
+
+    </fragment>
 
 </navigation>

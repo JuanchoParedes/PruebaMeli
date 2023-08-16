@@ -11,8 +11,6 @@ S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-A
-gradle.properties,2\a\2afbb999f001938c88fa43fc2ef52abf0f8213e4
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -24,3 +22,23 @@ C
 Napp/src/androidTest/java/com/juanparedes/pruebameli/ExampleInstrumentedTest.kt,7\2\72248bf368144e2f0d928c5a9c1da65eeb6e968c
 F
 app/proguard-rules.pro,9\e\9e08934d811afe28fbc77aaa3c0d747b94348db9
+s
+Capp/src/main/java/com/juanparedes/pruebameli/di/ApiServiceModule.kt,c\3\c383fa79e7bfa227eaf91baae1d3092f695f3b5a
+t
+Dapp/src/main/java/com/juanparedes/pruebameli/di/ApplicationModule.kt,7\e\7ec4aac7ba93b8b1cbaadfac46fa053d6590cad6
+u
+Eapp/src/main/java/com/juanparedes/pruebameli/PruebaMeliApplication.kt,2\1\21a17570e95eeb75f3add766c44d4dcdcd24a87d
+ƒ
+Sapp/src/main/java/com/juanparedes/pruebameli/view/SearchProductsViewModelFactory.kt,2\4\24f442f1f959ffc51f79e0c7bcf36139f0a59ba0
+t
+Dapp/src/main/java/com/juanparedes/pruebameli/di/ComponentProvider.kt,8\d\8d6be397449eda015cdfa23f79e8c3d97ac08369
+q
+Aapp/src/main/java/com/juanparedes/pruebameli/view/MainActivity.kt,5\f\5fd2080a416ff3e5459fdc48506a4de344b548ec
+m
+=app/src/main/java/com/juanparedes/pruebameli/di/DataModule.kt,0\1\01274e07e52e4d68605b4ce10719304a8ed75257
+{
+Kapp/src/main/java/com/juanparedes/pruebameli/data/local/ProductsDataBase.kt,6\1\611681a3e4e21577f610017921ab2205deee6da9
+|
+Lapp/src/main/java/com/juanparedes/pruebameli/data/remote/RemoteDataSource.kt,3\1\311a1bc826f1fa389ef20b8a83c4dd2a25fd13dc
+„
+Tapp/src/main/java/com/juanparedes/pruebameli/domain/service/SearchProductsService.kt,4\7\4712f46d4adcb12191327b8b5bcf18aef6d4ca53

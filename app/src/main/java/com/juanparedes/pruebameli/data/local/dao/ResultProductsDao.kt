@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.juanparedes.pruebameli.data.local.entity.ResultProductEntity
 import io.reactivex.rxjava3.core.Flowable
+import io.reactivex.rxjava3.core.Single
 
 @Dao
 abstract class ResultProductsDao {
@@ -18,7 +19,7 @@ abstract class ResultProductsDao {
     protected abstract fun deleteAllProducts()
 
     @Query("SELECT * FROM PRODUCTS WHERE product_id = :productId")
-    abstract fun getResultProduct(productId: String): Flowable<ResultProductEntity>
+    abstract fun getResultProduct(productId: String): Single<ResultProductEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     protected abstract fun insertResultProducts(products: List<ResultProductEntity>)

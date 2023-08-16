@@ -1,17 +1,16 @@
-package com.juanparedes.pruebameli.view
+package com.juanparedes.pruebameli.view.searchproducts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.juanparedes.pruebameli.R
 import com.juanparedes.pruebameli.databinding.FragmentSearchProductsBinding
 import com.juanparedes.pruebameli.di.ComponentProvider
 import com.juanparedes.pruebameli.view.adapter.ProductsAdapter
@@ -26,16 +25,30 @@ class SearchProductsFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchProductsBinding
 
-    private val productsAdapter: ProductsAdapter = ProductsAdapter()
+    private val productsAdapter: ProductsAdapter = ProductsAdapter {
+        navigateToDetailFragment(it.id)
+    }
+
+    private val searchBarListener = object : SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(query: String?): Boolean {
+            query?.let {
+                viewModel.searchProducts(it)
+            }
+            return false
+        }
+
+        override fun onQueryTextChange(newText: String?): Boolean {
+            return false
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
         activity?.run {
             (this.application as ComponentProvider).getComponent()
                 .inject(this@SearchProductsFragment)
         }
-        //viewModel.searchProducts("")
     }
 
     override fun onCreateView(
@@ -48,38 +61,45 @@ class SearchProductsFragment : Fragment() {
             layoutManager = LinearLayoutManager(context)
         }
 
+        binding.searchBar.setOnQueryTextListener(searchBarListener)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel.getProductsListLiveData().observe(viewLifecycleOwner, Observer {
-           onSearchProductState(it)
+            onSearchProductState(it)
         })
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.search_menu, menu)
     }
 
     private fun onSearchProductState(productState: SearchProductState) {
         when (productState) {
+            is SearchProductState.InitialState -> {
+                binding.progressBar.isVisible = false
+            }
+
             is SearchProductState.SearchResults -> {
                 binding.progressBar.isVisible = false
                 productsAdapter.submitList(productState.productsList)
             }
+
             is SearchProductState.Error -> {
                 binding.progressBar.isVisible = false
             }
+
             is SearchProductState.Loading -> {
                 binding.progressBar.isVisible = true
             }
         }
+    }
+
+    private fun navigateToDetailFragment(productId: String) {
+        findNavController().navigate(
+            SearchProductsFragmentDirections
+                .actionSearchProductsFragmentToProductDetailFragment(
+                    productId
+                )
+        )
     }
 
 }

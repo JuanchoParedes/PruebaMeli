@@ -6,11 +6,11 @@ data class Product(
     val id: String,
     val title: String,
     val thumbnail: String,
-    val price: Double
+    val price: String
 )
 
 fun ResultProduct.mapToPresentation() = Product(
-    id, title, thumbnail, price
+    id, title, thumbnail, price.toString()
 )
 
 fun List<ResultProduct>.mapToPresentation() = this.map { it.mapToPresentation() }

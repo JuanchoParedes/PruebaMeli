@@ -2,16 +2,16 @@ package com.juanparedes.pruebameli.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.juanparedes.pruebameli.databinding.ProductItemViewBinding
+import com.juanparedes.pruebameli.view.loadImage
 import com.juanparedes.pruebameli.view.model.Product
 
-class ProductsAdapter: ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(DiffCallback()) {
+class ProductsAdapter(
+    private val onItemClick: (Product) -> Unit
+): ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsViewHolder {
         return ProductsViewHolder(
@@ -24,17 +24,20 @@ class ProductsAdapter: ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(
     }
 
     override fun onBindViewHolder(holder: ProductsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClick)
     }
 
     class ProductsViewHolder(private val binding: ProductItemViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Product) {
+        fun bind(item: Product, onItemClick: (Product) -> Unit) {
             binding.apply {
                 tvProductTitle.text = item.title
                 tvProductPrice.text = "$${item.price}"
                 ivProductImage.loadImage(item.thumbnail)
+                root.setOnClickListener {
+                    onItemClick.invoke(item)
+                }
             }
         }
     }
@@ -49,12 +52,4 @@ class ProductsAdapter: ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(
             return oldItem == newItem
         }
     }
-}
-
-private fun ImageView.loadImage(imageUrl: String) {
-    Glide.with(context)
-        .load(imageUrl)
-        .centerCrop()
-        .diskCacheStrategy(DiskCacheStrategy.ALL)
-        .into(this)
 }

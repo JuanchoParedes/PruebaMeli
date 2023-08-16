@@ -1,4 +1,4 @@
-package com.juanparedes.pruebameli.view
+package com.juanparedes.pruebameli.view.searchproducts
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

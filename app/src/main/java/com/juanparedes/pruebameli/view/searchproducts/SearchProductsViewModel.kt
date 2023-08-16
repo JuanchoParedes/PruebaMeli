@@ -1,4 +1,4 @@
-package com.juanparedes.pruebameli.view
+package com.juanparedes.pruebameli.view.searchproducts
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,12 +11,12 @@ class SearchProductsViewModel(
     private val searchProductsUseCase: SearchProductsUseCase
 ) : ViewModel() {
 
-    private val productsLiveData = MutableLiveData<SearchProductState>()
+    private val productsLiveData = MutableLiveData<SearchProductState>(SearchProductState.InitialState)
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
 
     fun searchProducts(productName: String) {
         compositeDisposable.add(
-            searchProductsUseCase.execute("celular")
+            searchProductsUseCase.execute(productName)
                 .doOnSubscribe {
                     productsLiveData.value = SearchProductState.Loading
                 }
