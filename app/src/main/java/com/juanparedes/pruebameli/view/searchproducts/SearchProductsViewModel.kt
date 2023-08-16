@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.juanparedes.pruebameli.domain.usecase.SearchProductsUseCase
 import com.juanparedes.pruebameli.view.model.SearchProductState
 import com.juanparedes.pruebameli.view.model.mapToPresentation
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 private val TAG = SearchProductsViewModel::class.simpleName
 
@@ -21,6 +23,8 @@ class SearchProductsViewModel(
     fun searchProducts(productName: String) {
         compositeDisposable.add(
             searchProductsUseCase.execute(productName)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     productsLiveData.value = SearchProductState.LoadingState
                 }
@@ -34,6 +38,7 @@ class SearchProductsViewModel(
                     else
                         productsLiveData.value = SearchProductState.EmptyState
                 }
+
         )
     }
 
