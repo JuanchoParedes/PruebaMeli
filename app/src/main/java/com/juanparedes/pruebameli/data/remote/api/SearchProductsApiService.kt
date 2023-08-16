@@ -7,8 +7,8 @@ import retrofit2.http.Query
 
 interface SearchProductsApiService {
 
-    @GET("/sites/MLA")
+    @GET("/sites/MLA/search")
     fun searchProducts(
-        @Query("search") productName: String
+        @Query("q") productName: String
     ): Flowable<ResponseBodyWrapper>
 }

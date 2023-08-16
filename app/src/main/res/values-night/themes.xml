@@ -1,7 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.PruebaMeli" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.PruebaMeli" parent="Theme.MaterialComponents.Light.Bridge">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/brand_color</item>
+        <item name="colorPrimaryDark">@color/brand_color</item>
+        <item name="colorAccent">@color/brand_color</item>
     </style>
+    <style name="Theme.PruebaMeli" parent="Base.Theme.PruebaMeli" />
 </resources>
