@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Prueba MercadoLibre</string>
     <string name="search_menu_title">Search</string>
+    <string name="empty_results">No hay resultados en la busqueda</string>
+    <string name="error_state">Ha ocurrido un error</string>
+    <string name="initial_state">Usa la barra de busqueda</string>
 </resources>

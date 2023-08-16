@@ -36,9 +36,15 @@ m
 Tapp/src/main/java/com/juanparedes/pruebameli/domain/service/SearchProductsService.kt,4\7\4712f46d4adcb12191327b8b5bcf18aef6d4ca53
 q
 Aapp/src/main/java/com/juanparedes/pruebameli/view/MainActivity.kt,5\f\5fd2080a416ff3e5459fdc48506a4de344b548ec
-É
-Sapp/src/main/java/com/juanparedes/pruebameli/view/SearchProductsViewModelFactory.kt,2\4\24f442f1f959ffc51f79e0c7bcf36139f0a59ba0
 u
 Eapp/src/main/java/com/juanparedes/pruebameli/PruebaMeliApplication.kt,2\1\21a17570e95eeb75f3add766c44d4dcdcd24a87d
 s
 Capp/src/main/java/com/juanparedes/pruebameli/di/ApiServiceModule.kt,c\3\c383fa79e7bfa227eaf91baae1d3092f695f3b5a
+à
+Xapp/src/main/java/com/juanparedes/pruebameli/data/remote/api/SearchProductsApiService.kt,a\8\a815b6f40658aa850fba12029c31390ac50ffab5
+Ü
+Vapp/src/main/java/com/juanparedes/pruebameli/data/remote/entity/ResponseBodyWrapper.kt,4\d\4d615bc7993dcce4340e9d039b900dc0b5d4c7d5
+ç
+]app/src/main/java/com/juanparedes/pruebameli/data/remote/service/SearchProductsServiceImpl.kt,7\3\73e3f223d480c8387cf6bdd5d8765f985369420d
+o
+?app/src/main/java/com/juanparedes/pruebameli/di/AppComponent.kt,e\4\e4562559252a9d734403ae153f7c64c4ba9a7711

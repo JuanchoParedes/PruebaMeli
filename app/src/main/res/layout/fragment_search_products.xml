@@ -16,15 +16,25 @@
         tools:context=".view.searchproducts.SearchProductsFragment"
         tools:listitem="@layout/product_item_view" />
 
+    <TextView
+        android:id="@+id/tvEmptyResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        tools:text="@string/empty_results"
+        tools:visibility="visible" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rvProducts"
-        app:layout_constraintStart_toStartOf="@+id/rvProducts"
-        app:layout_constraintTop_toTopOf="@+id/rvProducts"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:visibility="visible" />
 
     <androidx.appcompat.widget.Toolbar
@@ -41,6 +51,7 @@
         tools:layout_editor_absoluteY="1dp">
 
         <androidx.appcompat.widget.SearchView
+            android:theme="@style/SearchViewStyle."
             android:id="@+id/searchBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize" />

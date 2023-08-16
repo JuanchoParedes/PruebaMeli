@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.juanparedes.pruebameli.R
 import com.juanparedes.pruebameli.databinding.FragmentSearchProductsBinding
 import com.juanparedes.pruebameli.di.ComponentProvider
 import com.juanparedes.pruebameli.view.adapter.ProductsAdapter
@@ -74,22 +75,57 @@ class SearchProductsFragment : Fragment() {
 
     private fun onSearchProductState(productState: SearchProductState) {
         when (productState) {
-            is SearchProductState.InitialState -> {
-                binding.progressBar.isVisible = false
-            }
-
+            is SearchProductState.InitialState -> onInitialState()
             is SearchProductState.SearchResults -> {
-                binding.progressBar.isVisible = false
+                onSearchResults()
                 productsAdapter.submitList(productState.productsList)
             }
+            is SearchProductState.ErrorState -> onErrorState()
+            is SearchProductState.LoadingState -> onLoadingState()
+            is SearchProductState.EmptyState -> onEmptyState()
+        }
+    }
 
-            is SearchProductState.Error -> {
-                binding.progressBar.isVisible = false
-            }
+    private fun onInitialState() {
+        with(binding){
+            tvEmptyResults.isVisible = true
+            tvEmptyResults.text = getString(R.string.initial_state)
+            progressBar.isVisible = false
+            rvProducts.isVisible = false
+        }
+    }
 
-            is SearchProductState.Loading -> {
-                binding.progressBar.isVisible = true
-            }
+    private fun onLoadingState() {
+        with(binding){
+            tvEmptyResults.isVisible = false
+            progressBar.isVisible = true
+            rvProducts.isVisible = false
+        }
+    }
+
+    private fun onEmptyState() {
+        with(binding){
+            tvEmptyResults.isVisible = true
+            tvEmptyResults.text = getString(R.string.empty_results)
+            progressBar.isVisible = false
+            rvProducts.isVisible = false
+        }
+    }
+
+    private fun onErrorState() {
+        with(binding){
+            tvEmptyResults.isVisible = true
+            tvEmptyResults.text = getString(R.string.error_state)
+            progressBar.isVisible = false
+            rvProducts.isVisible = false
+        }
+    }
+
+    private fun onSearchResults() {
+        with(binding){
+            tvEmptyResults.isVisible = false
+            progressBar.isVisible = false
+            rvProducts.isVisible = true
         }
     }
 
